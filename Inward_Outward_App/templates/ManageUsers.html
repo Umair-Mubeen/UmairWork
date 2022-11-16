@@ -1,0 +1,94 @@
+<title>Manage User</title>
+{% include 'libraries.html' %}
+
+<body class="hold-transition layout-top-nav">
+{% include 'navbar.html' %}
+<div class="wrapper">
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <div class="page-title d-flex">
+                            <!--                            <h4><i class="icon-arrow-right6 mr-2"></i> <span-->
+                            <!--                                    class="font-weight-semibold">Dashboard:-</span> Autos Software</h4>-->
+                        </div>
+                        <h1 class="m-0 text-dark"><small></small></h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="Dashboard" style="color:black"><i class="fa fa-home"></i> </a>
+                            </li>
+
+                            <li class="breadcrumb-item active">Manage Users</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+
+            <div class="container-fluid">
+
+<a href="/registration">
+    <button type="button" class="btn btn-block bg-gradient-primary btn-sm col-lg-2">Add New User</button>
+</a>
+                <br/>
+  <div class="row">
+
+                {% for Emp in EmpList %}
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card card-body shadow mb-3 border-top-info border border-info">
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <a href="/"
+                                       style="">
+                                        <div class="font-weight-semibold mb-0 text-dark ellipsis clientName">
+                                            <span> {{ Emp.Emp_Name }}</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2"><i class="fa fa-users fa-2x text-dark"></i></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-lg-5">
+                                    <a href="registration?Id={{Emp.id}}">
+                                        <i style="" class="fa fa-edit mr-2 text-dark icon-sm"></i>
+                                    </a>
+
+
+                                    <a href="/delete?Id={{Emp.id}}" class="delete_data" >
+
+                                        <i style="" class="fa fa-trash mr-2 fa-1x text-dark fa-sm"></i>
+                                    </a>
+
+
+
+                                                                   </div>
+                                <div class="col-lg-2">
+                                    <a href="#collapse7a02" class="text-default collapsed" data-toggle="collapse"
+                                       aria-expanded="false">
+                                        <i class="icon-circle-down2 text-center"></i>
+                                    </a>
+                                </div>
+                                <div class="col-lg-5">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Main Footer -->
+  {% include 'footer.html' %}
+</div>
+
+</body>
+</html>

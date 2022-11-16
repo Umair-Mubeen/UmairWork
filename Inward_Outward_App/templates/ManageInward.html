@@ -1,0 +1,138 @@
+{% include 'libraries.html' %}
+
+<body class="hold-transition layout-top-nav">
+{% include 'navbar.html' %}
+<div class="wrapper">
+    <div class="content-wrapper" style="min-height: 435px;">
+        <div class="content-header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <div class="page-title d-flex">
+                        </div>
+                        <h1 class="m-0 text-dark"><small></small></h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/Dashboard" style="color:black"><i
+                                    class="fa fa-home"></i>
+                            </a>
+                            </li>
+
+
+                            <li class="breadcrumb-item active"> Manage Inward</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="container-fluid">
+
+            <a href="/AddEditNewInward?return_url={{return_url}}">
+                <button type="button" class="btn btn-block bg-gradient-primary btn-sm col-lg-2">Add New Inward</button>
+            </a>
+            <br/>
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Sender Inward Letters</h3>
+
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 250px;">
+                                    <select name="filters" class="form-control float-right">
+                                          <option value="Excel"> Excel </option>
+                                           <option value="PDF"> PDF </option>
+                                      </select>
+
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-head-fixed text-nowrap">
+                                <thead>
+                                <tr>
+                                    <th>Sender Name</th>
+                                    <th>Sender Letter Subject</th>
+                                    <th>Sender Letter Number</th>
+                                    <th>Sender Letter Date</th>
+                                    <th>Sender Letter Type</th>
+                                    <th>Sender Letter Compliance Date</th>
+                                    <th>Actions </th>
+                                    <th>Progress </th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in result %}
+
+                                <tr>
+
+                                    <td>{{item.Sender_Name}}</td>
+                                    <td>{{item.Sender_Letter_Subject}}</td>
+                                    <td>{{item.Sender_Letter_Number}}</td>
+                                    <td>{{item.Sender_Letter_Date|date:'d-m-Y'}}</td>
+                                    <td>{{item.Sender_Letter_Type}}</td>
+                                    <td>{{item.Sender_Letter_Compliance_Date|date:'d-m-Y'}}</td>
+                                    <td>
+                                       <a href="AddEditNewInward?Id={{item.id}}&return_url={{return_url}}" title="Edit">
+                                        <i style="" class="fa fa-edit mr-2 text-dark icon-sm"></i>
+                                    </a>
+
+
+                                    <a href="AddEditNewInward?Id={{item.id}}&type=delete&return_url={{return_url}}" class="delete_inward"  title="Delete">
+                                        <i style="" class="fa fa-trash mr-2 fa-1x text-dark fa-sm"></i>
+                                    </a>
+
+                                        <a href="AddEditNewInward?Id={{item.id}}&type=clone&return_url={{return_url}}" class="clone_inward"  title="Clone">
+                                        <i style="" class="fa fa-clone mr-2 fa-1x text-dark fa-sm"></i>
+                                    </a>
+
+
+                                    </td>
+                                    <td><span class="text-success">Progress</span></td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    {% include 'footer.html' %}
+
+</div>
+
+</body>
+</html>
+
+<script>
+
+  $(document).ready(function() {
+       $('.js-example-basic-single').select2();
+
+});
+
+
+
+
+
+
+
+
+</script>

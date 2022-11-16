@@ -1,0 +1,238 @@
+{% include 'libraries.html' %}
+
+<body class="hold-transition layout-top-nav">
+{% include 'navbar.html' %}
+<div class="wrapper">
+    <div class="content-wrapper" style="min-height: 435px;">
+        <div class="content-header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <div class="page-title d-flex">
+                        </div>
+                        <h1 class="m-0 text-dark"><small></small></h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/Dashboard" style="color:black"><i class="fa fa-home"></i>
+                            </a>
+                            </li>
+                            '
+
+                            <li class="breadcrumb-item active"><a
+                                    href="{{return_url}}" style="color:black">
+                                Manage
+                                Inward </a></li>
+                            <li class="breadcrumb-item "> Senders</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="container-fluid">
+
+                <br/>
+            <form action="AddEditNewInward" id="AddEditNewInward" name="AddEditNewInward" method="POST">
+                {% csrf_token %}
+                <div class="row p-2">
+
+                    <div class="col-lg-4">
+                        <div class="card collapsed-card">
+                            <div class="card-header header-elements-inline">
+
+                                <h5 class="card-title">Add New InWard</h5>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                            class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                                            class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+
+
+                            <div class="card-body mt-0" style="display:block">
+                                <input type="hidden" name="hd_sender" value="{{Sender_Name}}" id="hd_sender">
+                                <div class="form-group">
+                                    <label>Sender Name </label>
+
+                                    <select class="js-example-basic-single form-control" name="Sender_Name" id="Sender_Name">
+                                        <option value="CIR ZONE-1">CIR Zone-1</option>
+                                        <option value="CIR ZONE-2">CIR Zone-2</option>
+                                         <option value="ADCIR Range-A">ADCIR Range-A</option>
+                                         <option value="DCIR Unit-I">DCIR Unit-I</option>
+                                         <option value="DCIR Unit-II">DCIR Unit-II</option>
+                                         <option value="DCIR Unit-III">DCIR Unit-III</option>
+                                         <option value="DCIR Unit-IV">DCIR Unit-IV</option>
+                                    </select>
+                                </div>
+                                <!-- /.form-group -->
+
+
+
+
+
+                                <div class="form-group">
+                                    <label> Subject </label>
+                                    <textarea rows="1" cols="5" name="Sender_Letter_Subject"
+                                              class="form-control"> {{Sender_Letter_Subject}} </textarea>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Sender Letter #</label>
+                                    <input type="text" name="Sender_Letter_Number" class="form-control" value="{{Sender_Letter_Number}}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Sender Letter Date</label>
+                                    <input type="date" name="Sender_Letter_Date" class="form-control" value="{{Sender_Letter_Date|date:'Y-m-d'}}" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Sender Letter Type </label>
+                                    <select name="Sender_Letter_Type" class="form-control" id="Sender_Letter_Type">
+                                        <option value="Board"> Board Matter</option>
+                                        <option value="FTO"> FTO Matter</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Sender Letter Compliance Date</label>
+                                    <input type="date" name="Sender_Letter_Compliance_Date" class="form-control" value="{{Sender_Letter_Compliance_Date|date:'Y-m-d'}}" >
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card collapsed-card">
+
+                            <div class="card-body" style="display:block">
+
+                                <div class="form-group">
+                                    <label>Office Inward Letter # </label>
+                                    <input type="text" name="Office_Letter_Number" class="form-control" value="{{Office_Letter_Number}}" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Office Inward Letter Date </label>
+                                    <input type="date" name="Office_Letter_Date" class="form-control"  value="{{Office_Letter_Date|date:'Y-m-d'}}">
+                                </div>
+
+                                <input type="hidden" name="hd_user_marked_to"  id ='hd_user_marked_to' value="{{Office_Letter_Marked_To}}">
+                                <div class="form-group">
+                                    <label>Office Inward Letter Marked To </label>
+                                    <select name="Office_Letter_Marked_To" class="form-control"
+                                            id="Office_Letter_Marked_To">
+                                        <option value="Umair">Umair</option>
+                                        <option value="Asif">Asif</option>
+                                        <option value="Ghulam Nabi">Ghulam Nabi</option>
+                                        <option value="Nafees Baig">Nafees Baig</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label> Officer Remarks </label>
+                                    <textarea rows="1" cols="5" name="Officer_Remarks" class="form-control">{{Officer_Remarks}}</textarea>
+                                </div>
+
+
+                                <input type="hidden" name="hd_Status"  id ='hd_Status' value="{{Office_Compliance_Status}}">
+                                <div class="form-group">
+                                    <label> Status </label>
+                                    <select name="Status" id="Status" class="form-control" >
+                                        <option value="Pending">Pending</option>
+                                        <option value="Complete">Complete</option>
+                                    </select>
+                                </div>
+
+                                <input type="hidden" name="hd_id" class="form-control" value="{{ID}}">
+                                <input type="hidden" class="form-control" name="hd_sender_id" value="">
+                                <input type="hidden" value="" name="hd_user_id" id="hd_user_id">
+                                <input type="hidden" value="{{return_url}}" name="hd_return_url" id="hd_return_url">
+
+
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a href="{{return_url}}" class="btn btn-default">Cancel</a>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    {% include 'footer.html' %}
+
+</div>
+
+</body>
+</html>
+
+<script>
+
+  $(document).ready(function() {
+       $('.js-example-basic-single').select2();
+
+   var select_user = document.getElementById("Office_Letter_Marked_To");
+   var hd_user_marked_to = document.getElementById("hd_user_marked_to").value;
+
+   var select_status = document.getElementById("Status");
+   var hd_Status = document.getElementById("hd_Status").value;
+   console.log(hd_Status);
+
+   var select_sender = document.getElementById("Sender_Name");
+   var hd_Sender = document.getElementById("hd_sender").value;
+   console.log(hd_Sender);
+
+  for (var i = 0; i < select_user.length; i++){
+    var option = select_user.options[i];
+    if (option.value == hd_user_marked_to){
+        $("#Office_Letter_Marked_To").val(hd_user_marked_to).change();
+  }
+  else{
+   console.log("False");
+  }
+  }
+
+   for (var i = 0; i < select_status.length; i++){
+    var option = select_status.options[i];
+    if (option.value == hd_Status){
+        $("#Status").val(hd_Status).change();
+  }
+  else{
+   console.log("False");
+  }
+  }
+
+  for (var i = 0; i < select_sender.length; i++){
+    var option = select_sender.options[i];
+    if (option.value == hd_Sender){
+        $("#Sender_Name").val(hd_Sender).change();
+  }
+  else{
+   console.log("False");
+  }
+  }
+
+
+
+});
+
+
+
+
+
+
+</script>

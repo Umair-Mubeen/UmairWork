@@ -169,7 +169,7 @@ def ManageInward(request):
             return HttpResponseRedirect('/')
         rows = Inward.objects.all().order_by('-id')
 
-        return render(request, 'ManageInward.html', {'result': rows, 'return_url' : enc(request.path), "enc" : enc("")})
+        return render(request, 'ManageInward.html', {'result': rows, 'return_url' : enc(request.path)})
     except Exception as e:
         return HttpResponse(str(e))
 

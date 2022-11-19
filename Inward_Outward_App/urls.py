@@ -13,5 +13,10 @@ urlpatterns = [
     path("delete", views.DeleteUser),
     path('Logout', views.Logout),
     path('AddEditNewInward', views.Add_Edit_New_Inward),
-    path('ManageInward', views.ManageInward)
+    path('ManageInward', views.ManageInward),
+    # path('Users/<int:UserID>', views.Users),
+    # path('Users/<str:UserID>', views.Users),
+    # path('Users/<slug:UserID>', views.Users),
+    path('Users/<UserID>', views.Users),
+
 ]

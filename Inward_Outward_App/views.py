@@ -174,6 +174,13 @@ def ManageInward(request):
         return HttpResponse(str(e))
 
 
+def Users(request, UserID):
+    try:
+        return HttpResponse(UserID)
+    except Exception as e:
+        return HttpResponse(e)
+
+
 def Add_Edit_New_Inward(request):
     if 'UserName' not in request.session:
         return HttpResponseRedirect('/')
